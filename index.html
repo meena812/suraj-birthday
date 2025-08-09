@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>VALORANT BDAY – SURAJ</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap');
+
+        :root{
+            --valorant-red:#ff4655;
+            --valorant-dark:#0f1419;
+        }
+
+        body{
+            margin:0;
+            height:100vh;
+            background:linear-gradient(135deg,var(--valorant-dark) 40%,#1a1e24 60%);
+            font-family:'Rajdhani',sans-serif;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            color:#fff;
+            overflow:hidden;
+        }
+
+        /* glitch title */
+        .glitch{
+            font-size:4rem;
+            font-weight:700;
+            text-transform:uppercase;
+            color:var(--valorant-red);
+            position:relative;
+            letter-spacing:.1em;
+            animation:pulse 2s infinite;
+        }
+        .glitch::before,
+        .glitch::after{
+            content:attr(data-text);
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:transparent;
+            overflow:hidden;
+        }
+        .glitch::before{
+            left:2px;
+            text-shadow:-2px 0 #00ffff;
+            animation:glitch-1 3s infinite linear alternate-reverse;
+        }
+        .glitch::after{
+            left:-2px;
+            text-shadow:-2px 0 #fffc00;
+            animation:glitch-2 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-1{
+            0%{clip-path:inset(40% 0 61% 0);}
+            20%{clip-path:inset(92% 0 1% 0);}
+            40%{clip-path:inset(43% 0 1% 0);}
+            60%{clip-path:inset(25% 0 58% 0);}
+            80%{clip-path:inset(54% 0 7% 0);}
+            100%{clip-path:inset(58% 0 43% 0);}
+        }
+        @keyframes glitch-2{
+            0%{clip-path:inset(65% 0 8% 0);}
+            20%{clip-path:inset(13% 0 48% 0);}
+            40%{clip-path:inset(1% 0 97% 0);}
+            60%{clip-path:inset(75% 0 16% 0);}
+            80%{clip-path:inset(98% 0 1% 0);}
+            100%{clip-path:inset(22% 0 67% 0);}
+        }
+        @keyframes pulse{
+            0%,100%{opacity:1;}
+            50%{opacity:.8;}
+        }
+
+        /* agents row */
+        .agents{
+            display:flex;
+            gap:2rem;
+            margin:2rem 0;
+        }
+        .agent{
+            width:120px;
+            height:120px;
+            border:2px solid var(--valorant-red);
+            border-radius:8px;
+            background-size:cover;
+            background-position:center;
+            transition:.3s;
+            cursor:default;
+        }
+        .agent:hover{
+            transform:scale(1.1);
+            box-shadow:0 0 20px var(--valorant-red);
+        }
+        .omen {background-image:url(<a href="https://ibb.co/BHTgDGKv"><img src="https://i.ibb.co/cK2N5wXR/c5c3a648-9273-4674-9195-da767d04e44f.png" alt="c5c3a648-9273-4674-9195-da767d04e44f" border="0"></a>)}
+        .jett {background-image:url('https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/bltceaa6cf20d328bd5/5eb26f5443f8e6507a6d1f29/Jett_KeyArt.png?auto=webp');}
+        .cypher{background-image:url(<a href="https://ibb.co/BHTgDGKv"><img src="https://i.ibb.co/cK2N5wXR/c5c3a648-9273-4674-9195-da767d04e44f.png" alt="c5c3a648-9273-4674-9195-da767d04e44f" border="0"></a>);}
+
+        /* message */
+        .message{
+            max-width:700px;
+            text-align:center;
+            font-size:1.4rem;
+            line-height:1.5;
+            margin-top:1rem;
+            color:#d0d0d0;
+        }
+        .signature{
+            margin-top:.5rem;
+            font-size:1.1rem;
+            color:var(--valorant-red);
+        }
+
+        /* confetti */
+        .confetti{
+            position:absolute;
+            width:6px;
+            height:20px;
+            background:var(--valorant-red);
+            animation:fall linear forwards;
+        }
+        @keyframes fall{
+            to{transform:translateY(105vh) rotate(360deg);}
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glitch" data-text="Happy Birthday SURAJ">Happy Birthday SURAJ</div>
+
+    <div class="agents">
+        <div class="agent omen" title="Omen"></div>
+        <div class="agent jett"  title="Jett"></div>
+        <div class="agent cypher" title="Cypher"></div>
+    </div>
+
+    <div class="message">
+        Suraj, today the Spike isn’t planted—<br/>
+        it’s your birthday cake! May your year be filled with aces, flawless executes, and zero throw rounds. <br/>
+        Keep dashing through life like Jett, lurking in the shadows like Cypher, and teleporting past every obstacle like Omen. <br/>
+        <span class="signature">—Your duo for life</span>
+    </div>
+
+    <!-- confetti script -->
+    <script>
+        function createConfetti(){
+            const colors = ['#ff4655','#ffffff','#00ffff'];
+            for(let i=0;i<60;i++){
+                const c = document.createElement('div');
+                c.className='confetti';
+                c.style.left = Math.random()*100+'vw';
+                c.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+                c.style.animationDuration = (Math.random()*2+2)+'s';
+                c.style.opacity = Math.random();
+                document.body.appendChild(c);
+                setTimeout(()=>c.remove(),4000);
+            }
+        }
+        window.addEventListener('load',createConfetti);
+    </script>
+</body>
+</html>
